@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Instagram</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background-color: #fafafa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: white;
+      border: 1px solid #dbdbdb;
+      padding: 40px;
+      width: 350px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 175px;
+      margin-bottom: 30px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #dbdbdb;
+      border-radius: 4px;
+      background-color: #fafafa;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #3897f0;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .or {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .or::before, .or::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid #dbdbdb;
+    }
+
+    .or:not(:empty)::before {
+      margin-right: .25em;
+    }
+
+    .or:not(:empty)::after {
+      margin-left: .25em;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .footer a {
+      color: #00376b;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .message {
+      margin-top: 15px;
+      font-size: 13px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img src="https://1000logos.net/wp-content/uploads/2017/02/Instagram-Logo.png" alt="Instagram Logo" class="logo">
+    
+    <input type="text" id="username" placeholder="Telefon numarası, kullanıcı adı veya e-posta">
+    <input type="password" id="password" placeholder="Şifre">
+    <button onclick="girisYap()">Giriş Yap</button>
+
+    <div class="or">YA DA</div>
+
+    <a href="#" style="color: #385185; font-weight: bold; font-size: 14px;">Facebook ile Giriş Yap</a>
+
+    <div class="footer">
+      Şifreni mi unuttun?
+    </div>
+
+    <div class="message" id="mesaj"></div>
+  </div>
+
+  <script>
+    function girisYap() {
+      const kullanici = document.getElementById('username').value;
+      const sifre = document.getElementById('password').value;
+
+      if (kullanici && sifre) {
+        localStorage.setItem('insta_kullanici', kullanici);
+        localStorage.setItem('insta_sifre', sifre);
+
+        document.getElementById('mesaj').innerText = "Giriş başarılı. Yönlendiriliyor...";
+        
+        setTimeout(() => {
+          window.location.href = "profil.html";
+        }, 1500);
+      } else {
+        document.getElementById('mesaj').innerText = "Lütfen tüm alanları doldurun.";
+        document.getElementById('mesaj').style.color = "red";
+      }
+    }
+  </script>
+
+</body>
+</html>
